@@ -4,25 +4,26 @@ import { createSlice } from "@reduxjs/toolkit";
 export const eventSlice = createSlice({
   name: "event",
   initialState: {
-    name: "alex",
-    email: "alex@gmail.com",
+    event: [],
+    isPending: false,
+    error: false,
   },
   reducers: {
     //object containing the actions for the slice
-    update: (state, action) => {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
+    updateStart: (state) => {
+      state.isPending = true;
     },
-    remove: (state) => {
-      state = null;
+    updateSuccess: (state, action) => {
+      state.isPending = false;
+      state.event = action.payload;
     },
-    addHello: (state, action) => {
-      state.name = "Hello " + action.payload.name;
+    updateFailure: (state) => {
+      state.error = true;
     },
   },
 });
 
 //we export every action to then use it on the pages
-export const { update, remove, addHello } = eventSlice.actions;
+export const { updateStart, updateSuccess, updateFailure } = eventSlice.actions;
 //export reducers
 export default eventSlice.reducer;

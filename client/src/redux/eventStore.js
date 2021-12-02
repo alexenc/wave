@@ -3,6 +3,6 @@ import eventReducer from "./eventSlice";
 
 export default configureStore({
   reducer: {
-    user: eventReducer,
+    event: eventReducer,
   },
 });
