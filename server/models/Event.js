@@ -9,6 +9,10 @@ const EventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  img: {
+    type: String,
+    default: "https://wallpaperstock.net/surf-wallpapers_33284_1920x1200.jpg",
+  },
   startDate: {
     type: Date,
     default: function () {

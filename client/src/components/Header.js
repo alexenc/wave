@@ -14,7 +14,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  minWidth: 300,
   backgroundColor: "#fff",
   border: "1px solid #000",
   boxShadow: 24,
@@ -31,12 +31,14 @@ const Header = () => {
       <Link to="/">
         <img src={Logo} alt="main logo" />
       </Link>
-      <h2>Wave-admin</h2>
+      <h2>Wave admin</h2>
       {user ? (
         <p>hola {user.username}</p>
       ) : (
-        <div>
-          <Button onClick={handleOpen}>Login</Button>
+        <div className="header-modal">
+          <button className="btn-main" onClick={handleOpen}>
+            Login
+          </button>
           <Modal open={open} onClose={handleOpen}>
             <Box style={style}>
               <Login />

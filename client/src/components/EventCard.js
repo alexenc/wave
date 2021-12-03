@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React from "react";
 
 const EventCard = ({ event }) => {
@@ -7,9 +8,16 @@ const EventCard = ({ event }) => {
 
   return (
     <>
-      <h3>{event.location}</h3>
-      <p>{event.isActive.toString()}</p>
-      <p>{Date.parse(event.startDate)}</p>
+      <Grid item className="event-card" xs={12} md={6} lg={3}>
+        <div className="titlecontainer">
+          <img src={event.img} alt="" />
+          <div>
+            <h3>{event.location}</h3>
+          </div>
+        </div>
+        <p>{event.isActive.toString()}</p>
+        <p>{Date.parse(event.startDate)}</p>
+      </Grid>
     </>
   );
 };
