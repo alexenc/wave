@@ -80,6 +80,6 @@ exports.getUsers = async (req, res) => {
 
     res.status(200).json(users);
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).json(error);
   }
 };

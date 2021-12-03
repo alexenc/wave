@@ -1,5 +1,10 @@
 // importar reducers del slice
 import { updateStart, updateSuccess, updateFailure } from "./eventSlice";
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+} from "./userSlice";
 import axios from "axios";
 
 export const getEvents = async (dispatch) => {
@@ -13,4 +18,16 @@ export const getEvents = async (dispatch) => {
   }
 };
 
-//crear export const con la logica de cada llamada a la api usando dispatch
+export const userLogin = async (user, dispatch) => {
+  dispatch(updateUserStart());
+
+  try {
+    const res = await axios.post(
+      "http://localhost:3000/v1/user/login",
+      user.user
+    );
+    dispatch(updateUserSuccess(res.data));
+  } catch (err) {
+    dispatch(updateUserFailure());
+  }
+};

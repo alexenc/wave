@@ -1,10 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import eventReducer from "./eventSlice";
 import userReducer from "./userSlice";
+import { configureStore } from "@reduxjs/toolkit";
 
 export default configureStore({
   reducer: {
-    event: eventReducer,
     user: userReducer,
   },
 });

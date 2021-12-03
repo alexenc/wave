@@ -3,6 +3,7 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 const middlewares = require("../middlewares/auth.js");
 
+// route /v1/user
 //create user
 
 router.post("/", userController.createUser);
