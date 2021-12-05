@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const eventController = require("../controllers/eventController");
-const middlewares = require("../middlewares/auth.js");
+
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 // buy a ticket
@@ -21,8 +20,8 @@ router.post("/create-checkout-session", async (req, res) => {
       },
     ],
     mode: "payment",
-    success_url: "http://localhost:3001/",
-    cancel_url: "http://localhost:3001/",
+    success_url: "http://localhost:3000/",
+    cancel_url: "http://localhost:3000/",
   });
 
   res.redirect(303, session.url);

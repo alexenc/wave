@@ -29,20 +29,11 @@ exports.createUser = async (req, res) => {
       },
     };
     //sign jwt
-    jwt.sign(
-      payload,
-      process.env.SECRET,
-      {
-        expiresIn: 3600,
-      },
-      (error, token) => {
-        if (error) throw error;
-
-        res.json({ token });
-      }
-    );
+    const accessToken = jwt.sign(payload, process.env.SECRET, {
+      expiresIn: "1d",
+    });
     //confirmation msg
-    res.status(200).json(user);
+    res.status(200).json({ user, accessToken });
   } catch (error) {
     console.log(error);
     res.status(400).send("error");

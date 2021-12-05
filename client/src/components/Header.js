@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import Logo from "../assets/Surfing_Isometric (1).svg";
 import Modal from "@mui/material/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Login from "./Login";
 import { useSelector } from "react-redux";
+import Register from "./Register";
 
 const style = {
   position: "absolute",
@@ -24,10 +25,30 @@ const style = {
 const Header = () => {
   const user = useSelector((state) => state.user.user.user);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
+  const [reglogin, setReglogin] = useState(false);
+  const [show, handleShow] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+    setReglogin(false);
+  };
+  const handleReglogin = () => setReglogin(!reglogin);
+
+  const transitionNavBar = () => {
+    if (window.scrollY > 100) {
+      handleShow(true);
+    } else {
+      handleShow(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", transitionNavBar);
+    return () => window.removeEventListener("scroll", transitionNavBar);
+  }, []);
 
   return (
-    <header>
+    <header className={`nav ${show && "nav-white"}`}>
       <Link to="/">
         <img src={Logo} alt="main logo" />
       </Link>
@@ -41,7 +62,11 @@ const Header = () => {
           </button>
           <Modal open={open} onClose={handleOpen}>
             <Box style={style}>
-              <Login />
+              {reglogin ? (
+                <Register handleReglogin={handleReglogin} />
+              ) : (
+                <Login handleReglogin={handleReglogin} />
+              )}
             </Box>
           </Modal>
         </div>

@@ -19,19 +19,10 @@ const EventList = () => {
   }, []);
 
   return (
-    <>
-      <h3
-        style={{
-          marginTop: 50,
-          paddingLeft: 15,
-          fontSize: "2rem",
-          color: "#008cff",
-        }}
-      >
-        Active Events
-      </h3>
+    <section className="eventlist-section">
+      <h3 className="eventlist-section-h3">Active Events</h3>
       <div className="eventList-container">
-        <Grid container spacing={3}>
+        <Grid container justify="center" alignItems="center" spacing={3}>
           {pending && (
             <>
               <EventPlaceholder />
@@ -45,7 +36,7 @@ const EventList = () => {
           ))}
         </Grid>
       </div>
-    </>
+    </section>
   );
 };
 

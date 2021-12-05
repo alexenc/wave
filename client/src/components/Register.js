@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../redux/apiCalls";
+import { userRegister } from "../redux/apiCalls";
 import { Input } from "@mui/material";
 
-const Login = ({ handleReglogin }) => {
+const Register = ({ handleReglogin }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -19,14 +19,18 @@ const Login = ({ handleReglogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userLogin({ user }, dispatch);
+    userRegister({ user }, dispatch);
   };
 
   return (
     <form className="auth-form">
       <div>
-        <label>Username or email</label>
+        <label>email</label>
         <Input type="email" name="email" onChange={handleChange} />
+      </div>
+      <div>
+        <label>Username</label>
+        <Input type="text" name="username" onChange={handleChange} />
       </div>
       <div>
         <label>Password</label>
@@ -38,13 +42,13 @@ const Login = ({ handleReglogin }) => {
         />
       </div>
       <button className="btn-main" type="submit" onClick={handleSubmit}>
-        login
+        Register
       </button>
       <p onClick={handleReglogin}>
-        don't have an account? <span> register here!</span>
+        Already have an account? <span> Login here!</span>
       </p>
     </form>
   );
 };
 
-export default Login;
+export default Register;

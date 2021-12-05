@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap");
+
+:root {
+  --dark-blue: #012f43;
+  --light-blue: #ffffff;
+}
 
 body {
   margin: 0;
@@ -17,23 +23,64 @@ code {
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Balsamiq Sans", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Mono", Arial, Helvetica, sans-serif;
 }
 
-header {
+.red {
+  background-color: rgb(112, 20, 20) !important;
+}
+
+.nav {
+  position: fixed;
   display: flex;
   align-items: center;
+  width: 100%;
+
   justify-content: space-between;
+  transition: all 0.5s ease;
+  z-index: 5;
 }
 
-header img {
-  width: 150px;
+.nav-white {
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(5px);
+}
+
+.infoContainer {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  text-shadow: 0 0 10px #fff;
+}
+
+.infoContainer h1 {
+  font-size: 4rem;
+}
+
+.nav img {
+  width: 125px;
 }
 
 .eventList-container {
   display: flex;
   flex-direction: column;
   padding: 35px;
+}
+
+span {
+  font-weight: bold;
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+form p {
+  margin-top: 35px;
+}
+
+form label {
+  color: var(--dark-blue);
 }
 
 .eventscontainer {
@@ -69,6 +116,7 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .titlecontainer h3 {
@@ -78,7 +126,7 @@ header img {
 
 header h2 {
   text-transform: uppercase;
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 0;
   text-shadow: 0px 0px 7px rgba(255, 255, 255, 0.3);
   line-height: 1;
@@ -122,6 +170,26 @@ header h2 {
   padding: 25px;
 }
 
+.mainsection-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("https://images.pexels.com/photos/416676/pexels-photo-416676.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainsection-container::after {
+  content: "";
+  width: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0), white);
+  height: 250px;
+  bottom: 0;
+  position: absolute;
+}
+
 .auth-form div {
   display: flex;
   flex-direction: column;
@@ -132,6 +200,97 @@ header h2 {
 .auth-form label {
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+.eventlist-section-h3 {
+  margin-top: 15vh;
+}
+
+.eventlist-section h3 {
+  padding-left: 15px;
+  font-size: 2rem;
+  color: var(--dark-blue);
+}
+
+.tickets-container {
+  margin-top: 20vh;
+
+  width: 100%;
+  background-color: var(--dark-blue);
+  position: relative;
+}
+
+.tickets-container::before {
+  content: "";
+  height: 250px;
+  width: 100%;
+  background-color: var(--dark-blue);
+  position: absolute;
+  top: -45px;
+  z-index: -1;
+  transform: skewY(2.5deg);
+}
+
+.tickets__text-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.tickets__text-container h2 {
+  margin-top: 50px;
+  font-size: 3rem;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.tickets__cards-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10vh;
+  padding: 35px;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding-bottom: 10vh;
+}
+
+.tickets__card {
+  height: 30vh;
+  width: 250px;
+  border-radius: 10px;
+  background-color: var(--light-blue);
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.tickets__card-amount-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.tickets__card-price-container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  align-items: center;
+}
+
+.tickets__card-price {
+  color: var(--dark-blue);
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.tickets__card:hover {
+  transform: scale(1.03);
 }
 
 @keyframes animate {
@@ -148,7 +307,6 @@ header h2 {
 
 @media (max-width: 650px) {
   header h2 {
-    font-size: 4rem;
     display: none;
   }
 }
