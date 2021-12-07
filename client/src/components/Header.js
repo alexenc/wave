@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Login from "./Login";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Register from "./Register";
+import { userEndSession } from "../redux/apiCalls";
 
 const style = {
   position: "absolute",
@@ -27,6 +28,7 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [reglogin, setReglogin] = useState(false);
   const [show, handleShow] = useState(false);
+  const dispatch = useDispatch();
 
   const handleOpen = () => {
     setOpen(!open);
@@ -54,7 +56,15 @@ const Header = () => {
       </Link>
       <h2>Wave admin</h2>
       {user ? (
-        <p>hola {user.username}</p>
+        <div>
+          <p>Welcome {user.username}</p>
+          <button
+            className="btn-main"
+            onClick={(e) => userEndSession(null, dispatch)}
+          >
+            Log out
+          </button>
+        </div>
       ) : (
         <div className="header-modal">
           <button className="btn-main" onClick={handleOpen}>

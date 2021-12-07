@@ -8,6 +8,12 @@ const EventCard = ({ event }) => {
   //Crear logica para hacer un contador que cuente hasta el inicio del evento
   const user = useSelector((state) => state.user.user.user);
   const [userInEvent, setUserInEvent] = useState(false);
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
 
   useEffect(() => {
     userInEventCheck();
@@ -62,17 +68,22 @@ const EventCard = ({ event }) => {
             <h3>{event.location}</h3>
           </div>
         </div>
-        <p>{event.isActive.toString()}</p>
-        <p>{Date.parse(event.startDate)}</p>
-        {userInEvent ? (
-          <button className="btn-main red" onClick={exitEvent}>
-            Exit
-          </button>
-        ) : (
-          <button className="btn-main" onClick={joinEvent}>
-            join
-          </button>
-        )}
+        <div className="event-cardinfo-container">
+          <div>
+            <p>{event.isActive ? <p>Currently active</p> : <p>Inactive</p>}</p>
+            <p>Start date: {new Date(event.startDate).toLocaleDateString()}</p>
+          </div>
+
+          {userInEvent ? (
+            <button className="btn-main red" onClick={exitEvent}>
+              Exit
+            </button>
+          ) : (
+            <button className="btn-main" onClick={joinEvent}>
+              join
+            </button>
+          )}
+        </div>
       </Grid>
     </>
   );

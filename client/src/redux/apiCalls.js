@@ -33,6 +33,16 @@ export const userLogin = async (user, dispatch) => {
   }
 };
 
+export const userEndSession = async (user, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    await dispatch(updateUserSuccess({}));
+    localStorage.removeItem("token");
+  } catch (error) {
+    dispatch(updateUserFailure());
+  }
+};
+
 export const userRegister = async (user, dispatch) => {
   dispatch(updateUserStart());
 

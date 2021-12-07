@@ -23,7 +23,7 @@ const Tickets = () => {
             <button className="btn-main">Buy</button>
           </div>
         </div>
-        <div className="tickets__card" style={{ height: "35vh" }}>
+        <div className="tickets__card">
           <h3>Triple pack</h3>
           <div className="tickets__card-amount-container">
             <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-ticket-interface-kiranshastry-lineal-color-kiranshastry.png" />
