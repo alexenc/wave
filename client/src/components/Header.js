@@ -25,6 +25,7 @@ const style = {
 
 const Header = () => {
   const user = useSelector((state) => state.user.user.user);
+  const isAdmin = useSelector((state) => state.user.user.user?.isAdmin);
   const [open, setOpen] = useState(false);
   const [reglogin, setReglogin] = useState(false);
   const [show, handleShow] = useState(false);
@@ -56,14 +57,19 @@ const Header = () => {
       </Link>
       <h2>Wave admin</h2>
       {user ? (
-        <div>
+        <div style={{ paddingRight: 15 }}>
           <p>Welcome {user.username}</p>
-          <button
-            className="btn-main"
+          <p
+            style={{ fontWeight: "bold", cursor: "pointer" }}
             onClick={(e) => userEndSession(null, dispatch)}
           >
             Log out
-          </button>
+          </p>
+          {isAdmin && (
+            <Link className="react-link" to="/admin">
+              Admin panel
+            </Link>
+          )}
         </div>
       ) : (
         <div className="header-modal">

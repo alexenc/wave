@@ -4,13 +4,13 @@ const verifyToken = (req, res, next) => {
   //take token from header
 
   const token = req.headers.token;
-
+  console.log(token);
   if (!token) {
     return res.status(400).json("no-token");
   }
 
   jwt.verify(token, process.env.SECRET, (err, user) => {
-    if (err) res.status(403).json("invalid token");
+    if (err) return res.status(403).json("invalid token");
 
     req.user = user;
     next();

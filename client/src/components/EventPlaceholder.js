@@ -3,7 +3,7 @@ import ContentLoader from "react-content-loader";
 
 const EventPlaceholder = () => {
   return (
-    <Grid item xs={12} md={6} lg={3}>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
       <ContentLoader
         speed={2}
         width={400}

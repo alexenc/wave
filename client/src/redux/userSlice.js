@@ -12,9 +12,11 @@ export const userSlice = createSlice({
     //object containing the actions for the slice
     updateUserStart: (state) => {
       state.isPending = true;
+      state.error = false;
     },
     updateUserSuccess: (state, action) => {
       state.isPending = false;
+      state.error = false;
       state.user = action.payload;
     },
     updateUserFailure: (state) => {

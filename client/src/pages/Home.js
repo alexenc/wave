@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import EventList from "../components/EventList";
 import MainSection from "../components/MainSection";
 import Tickets from "../components/Tickets";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <MainSection />
       <EventList />
       <Tickets />
+      <Footer />
     </div>
   );
 };

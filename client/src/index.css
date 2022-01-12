@@ -108,6 +108,12 @@ form label {
   border-radius: 7px;
 }
 
+.react-link {
+  color: var(--dark-blue);
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .titlecontainer {
   position: relative;
 }
@@ -174,6 +180,11 @@ header h2 {
   justify-content: center;
   align-items: center;
   padding: 25px;
+}
+
+.auth-form h3 {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
 .mainsection-container {
@@ -311,6 +322,73 @@ header h2 {
   transform: scale(1.03);
 }
 
+.eventpage-container {
+  padding: 20vh 5vh 0 5vh;
+  display: flex;
+}
+.eventpage-info-container {
+  flex: 1;
+}
+.evetpage-map-container {
+  flex: 1;
+}
+
+.eventpage-info-container img {
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 7px;
+}
+.peoplelist {
+  display: flex;
+  margin: 10px 0 10px 0px;
+  align-items: center;
+}
+.peoplelist img {
+  width: 30px;
+  margin: 0 5px 0 5px;
+}
+
+.logoFooter {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lastestEvents {
+  flex: 1;
+}
+
+.eventstext {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialsContainer {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formsContainer {
+  padding-top: 20vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-blue);
+}
+
+footer {
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 @keyframes animate {
   0% {
     background-position: 0 100%;
@@ -332,5 +410,17 @@ header h2 {
 @media (max-width: 936px) {
   .tickets__card:nth-child(2) {
     height: 30vh;
+  }
+  .eventpage-container {
+    flex-direction: column;
+  }
+
+  footer {
+    flex-direction: column-reverse;
+    gap: 25px;
+  }
+
+  .eventstext {
+    align-items: center;
   }
 }

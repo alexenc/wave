@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/apiCalls";
 import { Input } from "@mui/material";
+import Swal from "sweetalert2";
 
 const Login = ({ handleReglogin }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -21,6 +23,8 @@ const Login = ({ handleReglogin }) => {
     e.preventDefault();
     userLogin({ user }, dispatch);
   };
+
+  const error = useSelector((state) => state.user.error);
 
   return (
     <form className="auth-form">
@@ -43,6 +47,7 @@ const Login = ({ handleReglogin }) => {
       <p onClick={handleReglogin}>
         don't have an account? <span> register here!</span>
       </p>
+      {error && <p style={{ color: "red" }}>user or password incorrect</p>}
     </form>
   );
 };

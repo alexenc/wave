@@ -33,4 +33,8 @@ router.get("/", eventController.getAllEvents);
 
 router.get("/active", eventController.getActiveEvents);
 
+//get single event
+
+router.get("/:id", eventController.getSingleEvent);
+
 module.exports = router;

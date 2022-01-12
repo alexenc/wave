@@ -35,11 +35,13 @@ exports.joinEvent = async (req, res) => {
 
     //check if user is already signed in the event
     const checkIfUserIsSinged = (event, user) => {
-      const userId = user._id;
+      const userId = user._id.toString();
+      console.log(userId);
 
       for (let i = 0; i < event.peopleList.length; i++) {
-        event.peopleList[i]._id == userId;
-        throw "you are already in the event";
+        if (event.peopleList[i]._id.toString() == userId) {
+          throw "you are already in the event";
+        }
       }
       return false;
     };
@@ -58,7 +60,7 @@ exports.joinEvent = async (req, res) => {
 
     res.status(200).json(event);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 };
 
@@ -110,6 +112,18 @@ exports.getActiveEvents = async (req, res) => {
   try {
     const activeEvents = await Event.find({ isActive: true });
     res.status(200).json(activeEvents);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+exports.getSingleEvent = async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+
+  try {
+    const events = await Event.find({ _id: id });
+    res.status(200).json(events);
   } catch (error) {
     res.status(500).json(error);
   }

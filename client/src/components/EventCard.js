@@ -1,23 +1,18 @@
 import { Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 import axiosClient from "../axiosConfig";
+import { Link } from "react-router-dom";
 
 const EventCard = ({ event }) => {
   //Crear logica para hacer un contador que cuente hasta el inicio del evento
   const user = useSelector((state) => state.user.user.user);
   const [userInEvent, setUserInEvent] = useState(false);
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
 
   useEffect(() => {
     userInEventCheck();
-    console.log("hola");
   }, [user, event]);
 
   const userInEventCheck = () => {
@@ -30,6 +25,14 @@ const EventCard = ({ event }) => {
   };
 
   const joinEvent = async () => {
+    !user &&
+      Swal.fire({
+        position: "top-end",
+        title: "Login or create an account to join an event",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
     const config = {
       headers: {
         token: localStorage.getItem("token"),
@@ -62,12 +65,14 @@ const EventCard = ({ event }) => {
   return (
     <>
       <Grid item className="event-card" xs={12} sm={6} md={4} lg={3}>
-        <div className="titlecontainer">
-          <img src={event.img} alt="" />
-          <div>
-            <h3>{event.location}</h3>
+        <Link to={`event/${event._id}`}>
+          <div className="titlecontainer">
+            <img src={event.img} alt="" />
+            <div>
+              <h3>{event.location}</h3>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="event-cardinfo-container">
           <div>
             <p>{event.isActive ? <p>Currently active</p> : <p>Inactive</p>}</p>
